@@ -27,8 +27,6 @@ El sistema está diseñado con enfoque **production-aware**, priorizando:
 
 * Extensibilidad
 
-> ⚠️ Nota: El módulo RAG (Retrieval-Augmented Generation) se encuentra en desarrollo y será activado en la rama `feature/rag-module`.  
-> La versión actual en `main` implementa arquitectura multi-provider, tool calling y fallback resiliente.
 
 ## 🏗 Arquitectura General
 
@@ -305,15 +303,15 @@ El agente detecta la intención, llama a la herramienta apropiada e inyecta el r
 
 ### - Log de ejecución de herramienta
 
-![Ejecución de Herramienta](docs/images/tool-execution-log.png)
+![Ejecución de Herramienta](docs/images/tool-execution-log.PNG)
 
 ### - Búsqueda exitosa de estudiante
 
-![Estudiante 1024](docs/images/tool-response-1024.png)
+![Estudiante 1024](docs/images/tool-response-1024.PNG)
 
 ### - Caso de estudiante inexistente
 
-![Estudiante 9999](docs/images/tool-response-9999.png)
+![Estudiante 9999](docs/images/tool-response-9999.PNG)
 
 ### 🤖 Prueba de No Chatbot Genérico
 
@@ -321,7 +319,7 @@ El agente NO responde como un chatbot conversacional libre. Solo utiliza herrami
 
 ### - Pregunta fuera de dominio
 
-![Prueba No Chatbot](docs/images/no-chatbot-test.png)
+![Prueba No Chatbot](docs/images/no-chatbot-test.PNG)
 
 ---
 
@@ -379,6 +377,8 @@ ai-commercial-agent/
 ├── README.md
 └── requirements.txt
 ```
+> ⚠️ Nota: El módulo RAG (Retrieval-Augmented Generation) se encuentra en desarrollo y será activado en la rama `feature/rag-module`.  
+> La versión actual en `main` implementa arquitectura multi-provider, tool calling y fallback resiliente.
 
 ## 🧩 Posibles Mejoras Futuras
 
