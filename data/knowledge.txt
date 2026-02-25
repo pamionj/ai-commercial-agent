@@ -1,0 +1,14 @@
+Productos disponibles:
+
+Plato biodegradable: $500 por unidad.
+Cubiertos compostables: $300 por unidad.
+Vasos reciclables: $250 por unidad.
+
+Política de descuentos:
+
+- Sobre 100 unidades: 5%
+- Sobre 500 unidades: 10%
+- Sobre 1000 unidades: 15%
+
+Despacho en Santiago: 24-48 horas.
+Despacho regiones: 3-5 días hábiles.
