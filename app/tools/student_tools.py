@@ -1,4 +1,9 @@
+import re
+
 def get_student_status(student_id: str):
+
+    # Extraer solo números
+    student_id = re.sub(r"\D", "", student_id)
 
     fake_database = {
         "1024": "Aceptado en práctica en Lyon",

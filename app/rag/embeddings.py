@@ -1,7 +1,14 @@
 from sentence_transformers import SentenceTransformer
+import numpy as np
 
-# Modelo liviano y eficiente (384 dimensiones)
-model = SentenceTransformer("all-MiniLM-L6-v2")
+class EmbeddingModel:
 
-def get_embedding(text: str):
-    return model.encode(text)
+    def __init__(self, model_name="all-MiniLM-L6-v2"):
+        self.model = SentenceTransformer(model_name)
+
+    def encode(self, texts):
+        if isinstance(texts, str):
+            texts = [texts]
+
+        embeddings = self.model.encode(texts, convert_to_numpy=True)
+        return embeddings.astype(np.float32)
