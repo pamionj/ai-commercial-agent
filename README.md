@@ -29,7 +29,7 @@ El sistema incluye un módulo de Recuperación-Generación Aumentada (RAG) con:
 
 >Este proyecto implementa un backend de IA orientado a integración con lógica de negocio real, evitando el enfoque de chatbot genérico.
 
-## ⚡ Quick Demo
+## ⚡ Demo Rápido
 
 ```
 POST /chat
@@ -664,6 +664,8 @@ ai-commercial-agent/
 ├── README.md
 └── requirements.txt
 ```
+> ⚠️ Nota: El módulo RAG (Retrieval-Augmented Generation) se encuentra en desarrollo y será activado en la rama `feature/rag-module`.  
+> La versión actual en `main` implementa arquitectura multi-provider, tool calling y fallback resiliente.
 
 ## 🎯 Qué Demuestra Este Proyecto
 
