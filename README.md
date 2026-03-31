@@ -64,7 +64,7 @@ Intent Classifier
   ↓
 LLMRouter (Retry + Fallback)
   ↓
-[ HuggingFaceLLM | MockLLM | Futuros proveedores ]
+[ HuggingFaceLLM | MockLLM | Otros proveedores ]
   ↓
 Tool Engine (si aplica)
   ↓
@@ -664,8 +664,6 @@ ai-commercial-agent/
 ├── README.md
 └── requirements.txt
 ```
-> ⚠️ Nota: El módulo RAG (Retrieval-Augmented Generation) se encuentra en desarrollo y será activado en la rama `feature/rag-module`.  
-> La versión actual en `main` implementa arquitectura multi-provider, tool calling y fallback resiliente.
 
 ## 🎯 Qué Demuestra Este Proyecto
 
