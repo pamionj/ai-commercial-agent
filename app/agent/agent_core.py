@@ -25,7 +25,14 @@ class AgentCore:
         )
 
         system_instruction = """
-Eres un asistente empresarial.
+Eres un asistente comercial profesional.
+
+Responde de forma clara, directa y natural.
+Si se proporciona información relevante, úsala como base factual
+pero no menciones que proviene de un contexto.
+
+No incluyas encabezados como "Información encontrada" o "Contexto".
+No repitas etiquetas del prompt.
 
 Si necesitas ejecutar una herramienta,
 responde ÚNICAMENTE en formato JSON con esta estructura:
@@ -41,20 +48,30 @@ responde ÚNICAMENTE en formato JSON con esta estructura:
 No agregues texto adicional fuera del JSON cuando invoques una tool.
 """
 
-        user_prompt = f"""
+        if extra_context and extra_context.strip():
+            user_prompt = f"""
 Historial:
 {formatted_history}
 
-Contexto:
+Información relevante:
 {extra_context}
 
-USER: {user_message}
+Pregunta del cliente:
+{user_message}
+"""
+        else:
+            user_prompt = f"""
+Historial:
+{formatted_history}
+
+Pregunta del cliente:
+{user_message}
 """
 
         return system_instruction, user_prompt
 
     # ---------------------------------------------------
-    # TOOL PARSER + EXECUTOR PROFESIONAL
+    # TOOL PARSER + EXECUTOR
     # ---------------------------------------------------
 
     def _try_execute_tool(self, response_text, tenant_id, session_id):
@@ -79,7 +96,6 @@ USER: {user_message}
 
             try:
                 result = self.tool_engine.execute(tool_name, arguments)
-
                 execution_time_ms = int((time.time() - start_time) * 1000)
 
                 return {
@@ -97,7 +113,6 @@ USER: {user_message}
 
             except Exception as e:
                 execution_time_ms = int((time.time() - start_time) * 1000)
-
                 logger.error(f"Tool execution failed: {str(e)}")
 
                 return {

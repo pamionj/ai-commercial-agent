@@ -7,10 +7,15 @@ class MockLLM(LLMInterface):
     def generate(self, system_prompt: str, user_prompt: str) -> str:
 
         # -----------------------------------------
-        # Extraer SOLO el último mensaje USER
+        # Extraer pregunta del cliente
         # -----------------------------------------
         try:
-            last_user_message = user_prompt.split("USER:")[-1].strip()
+            if "Pregunta del cliente:" in user_prompt:
+                last_user_message = user_prompt.split("Pregunta del cliente:")[-1].strip()
+            elif "USER:" in user_prompt:
+                last_user_message = user_prompt.split("USER:")[-1].strip()
+            else:
+                last_user_message = user_prompt
         except Exception:
             last_user_message = user_prompt
 
@@ -33,9 +38,6 @@ class MockLLM(LLMInterface):
         # -----------------------------------------
         if "estudiante" in text:
 
-            print("TOOL CONDITION TRIGGERED")
-
-            # Extraer número del mensaje
             match = re.search(r"\d+", text)
             student_id = match.group(0) if match else ""
 
@@ -50,11 +52,16 @@ class MockLLM(LLMInterface):
 """
 
         # -----------------------------------------
-        # 3️⃣ RAG simulation
+        # 3️⃣ RAG simulation limpia
         # -----------------------------------------
+        extra_context = ""
+
         try:
-            between = user_prompt.split("Historial:")[1]
-            extra_context = between.split("USER:")[0].strip()
+            if "Información relevante:" in user_prompt:
+                extra_context = user_prompt.split("Información relevante:")[-1]
+                if "Pregunta del cliente:" in extra_context:
+                    extra_context = extra_context.split("Pregunta del cliente:")[0]
+                extra_context = extra_context.strip()
         except Exception:
             extra_context = ""
 
@@ -62,8 +69,6 @@ class MockLLM(LLMInterface):
 
         if extra_context:
             return (
-                "Gracias por tu consulta.\n\n"
-                "Información encontrada:\n\n"
                 f"{extra_context}\n\n"
                 "¿Deseas que prepare una cotización?"
             )

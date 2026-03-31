@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -12,16 +15,31 @@ from app.agent.hf_llm import HuggingFaceLLM
 
 app = FastAPI()
 
+# ---------------------------------------------------
 # Infraestructura (singletons simples)
+# ---------------------------------------------------
+
 rag_registry = RAGRegistry()
 session_manager = SessionManager()
 intent_classifier = IntentClassifier()
 tool_engine = ToolEngine()
 
-llm = LLMRouter({
-    "mock": MockLLM(),
-    # "hf": HuggingFaceLLM(...)
-})
+# ---------------------------------------------------
+# Configuración dinámica de proveedores LLM
+# ---------------------------------------------------
+
+providers = {
+    "mock": MockLLM()
+}
+
+if os.getenv("HF_API_TOKEN"):
+    providers["hf"] = HuggingFaceLLM()
+
+llm = LLMRouter(providers)
+
+# ---------------------------------------------------
+# Construcción del AgentCore
+# ---------------------------------------------------
 
 agent = AgentCore(
     llm=llm,
@@ -30,12 +48,18 @@ agent = AgentCore(
     tool_engine=tool_engine
 )
 
+# ---------------------------------------------------
+# API Schemas
+# ---------------------------------------------------
 
 class ChatRequest(BaseModel):
     tenant_id: str
     session_id: str
     message: str
 
+# ---------------------------------------------------
+# Endpoints
+# ---------------------------------------------------
 
 @app.post("/chat")
 def chat(request: ChatRequest):
@@ -46,6 +70,7 @@ def chat(request: ChatRequest):
         session_manager=session_manager
     )
     return {"response": response}
+
 
 @app.get("/")
 def root():

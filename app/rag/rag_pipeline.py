@@ -105,4 +105,4 @@ class RAGPipeline:
 
         # Si no aplica extracción estructurada, devolver contexto normal
         context = "\n\n".join(retrieved_docs)
-        return f"\n\nContexto relevante:\n{context}\n"
+        return context

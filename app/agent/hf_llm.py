@@ -6,17 +6,19 @@ from .llm_interface import LLMInterface
 class HuggingFaceLLM(LLMInterface):
 
     def __init__(self):
-        self.api_token = os.getenv("HF_API_TOKEN")
-        self.client = InferenceClient(token=self.api_token)
-        self.model = "mistralai/Mistral-7B-Instruct-v0.2"
+        self.api_key = os.getenv("HF_API_TOKEN")
+        self.model = "google/flan-t5-base"
+
+        self.client = InferenceClient(
+            model=self.model,
+            token=self.api_key
+        )
 
     def generate(self, system_prompt: str, user_prompt: str) -> str:
-      #  raise Exception("Simulated HF failure")
         print(">>> USING HUGGINGFACE LLM <<<")
 
         try:
             response = self.client.chat_completion(
-                model=self.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
@@ -25,7 +27,16 @@ class HuggingFaceLLM(LLMInterface):
                 temperature=0.7
             )
 
-            return response.choices[0].message.content
+            content = response.choices[0].message.content
+
+            # 🔴 VALIDACIÓN SIMPLE (CLAVE)
+            if not content or not content.strip():
+                raise Exception("Empty response from HF")
+
+            return content
 
         except Exception as e:
-            return f"[HF ERROR] {str(e)}"
+            print("HF FAILED:", str(e))
+
+            # 🔥 IMPORTANTE: lanzar error para que luego podamos hacer fallback
+            raise
