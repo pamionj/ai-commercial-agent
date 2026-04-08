@@ -755,12 +755,10 @@ Este proyecto forma parte de un portafolio orientado a desarrollo de sistemas de
 - LinkedIn: https://www.linkedin.com/in/pamionj
 
 ---
+
 ## Licencia
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo la **GNU General Public License v3.0**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-MIT License
-
-Copyright (c) [2026] [Pablo Amion]
-
+Copyright (c) 2026 Pablo Amion
 
