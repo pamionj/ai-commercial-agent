@@ -1,4 +1,20 @@
 # AI Commercial Agent — Arquitectura LLM Empresarial con RAG y Orquestación de Herramientas
+
+<p align="center">
+  <img src="https://img.shields.io/github/repo-size/pamionj/ai-commercial-agent?style=for-the-badge" />
+  <img src="https://img.shields.io/github/issues/pamionj/ai-commercial-agent?style=for-the-badge&color=orange" />
+  <img src="https://img.shields.io/github/issues-pr/pamionj/ai-commercial-agent?style=for-the-badge&color=blueviolet" />
+  <img src="https://img.shields.io/github/license/pamionj/ai-commercial-agent?style=for-the-badge&color=blue" />
+  <br />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" />
+  <img src="https://img.shields.io/badge/Backend-Architecture-blue?style=for-the-badge&logo=serverless" />
+  <img src="https://img.shields.io/badge/LLM-Powered-6f42c1?style=for-the-badge&logo=openai" />
+  <img src="https://img.shields.io/badge/RAG-Augmented%20Generation-7B61FF?style=for-the-badge&logo=semantic-web&logoColor=white" />
+</p>
+
+
 ## 📌 Overview
 
 AI Commercial Agent es un backend orientado a arquitectura empresarial que implementa un sistema de orquestación de modelos LLM desacoplado, resiliente y extensible.
@@ -738,5 +754,13 @@ Este proyecto forma parte de un portafolio orientado a desarrollo de sistemas de
 - GitHub: https://github.com/pamionj
 - LinkedIn: https://www.linkedin.com/in/pamionj
 
+---
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+MIT License
+
+Copyright (c) [2026] [Pablo Amion]
 
 
