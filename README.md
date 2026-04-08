@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/github/repo-size/pamionj/ai-commercial-agent?style=for-the-badge" />
   <img src="https://img.shields.io/github/issues/pamionj/ai-commercial-agent?style=for-the-badge&color=orange" />
   <img src="https://img.shields.io/github/issues-pr/pamionj/ai-commercial-agent?style=for-the-badge&color=blueviolet" />
-  <img src="https://img.shields.io/github/license/pamionj/ai-commercial-agent?style=for-the-badge&color=blue" />
+  <img src="https://img.shields.io/badge/Licencia-GPL%20v3.0-blue?style=for-the-badge" />
   <br />
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
