@@ -67,6 +67,41 @@ Respuesta:
 }
 ```
 
+## ⚙️ Configuración del Entorno
+
+### Variables de Entorno (.env)
+
+El proyecto requiere un archivo `.env` en la raíz para configurar:
+
+```bash
+# Copiar el archivo de ejemplo
+cp .env.example .env
+```
+
+**Variables disponibles:**
+
+| Variable | Requerida | Default | Descripción |
+|----------|-----------|---------|-------------|
+| `HF_API_TOKEN` | No | `None` | Token API de HuggingFace. Si no se proporciona, solo funciona MockLLM |
+| `LLM_ORDER` | No | `hf,mock` | Orden de proveedores LLM a probar (con fallback automático) |
+| `LLM_MAX_RETRIES` | No | `2` | Número de reintentos por provider antes de fallback |
+| `CORS_ALLOWED_ORIGINS` | No | `http://localhost:3000,http://localhost:8000` | Orígenes permitidos para CORS (separados por coma) |
+
+**Ejemplo `.env` para desarrollo:**
+
+```env
+HF_API_TOKEN=hf_xxxxxxxxxxxxxxxxxx
+LLM_ORDER=mock,hf
+LLM_MAX_RETRIES=2
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8000
+```
+
+**Notas:**
+- Nunca commits `.env` a git (solo `.env.example`)
+- Para producción, actualiza `CORS_ALLOWED_ORIGINS` con tus dominios reales
+- MockLLM funciona sin `HF_API_TOKEN` (útil para desarrollo sin costo)
+- Ver [`.env.example`](.env.example) para documentación completa
+
 ## 🏗 Arquitectura General
 
 ```

@@ -1,6 +1,9 @@
 import os
+import logging
 from huggingface_hub import InferenceClient
 from .llm_interface import LLMInterface
+
+logger = logging.getLogger("hf_llm")
 
 
 class HuggingFaceLLM(LLMInterface):
@@ -15,7 +18,7 @@ class HuggingFaceLLM(LLMInterface):
         )
 
     def generate(self, system_prompt: str, user_prompt: str) -> str:
-        print(">>> USING HUGGINGFACE LLM <<<")
+        logger.info("Generating response using HuggingFace LLM")
 
         try:
             response = self.client.chat_completion(
@@ -36,7 +39,7 @@ class HuggingFaceLLM(LLMInterface):
             return content
 
         except Exception as e:
-            print("HF FAILED:", str(e))
+            logger.error(f"HuggingFace LLM failed: {str(e)}", exc_info=True)
 
             # 🔥 IMPORTANTE: lanzar error para que luego podamos hacer fallback
             raise
